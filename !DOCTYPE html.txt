@@ -1,0 +1,1913 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyrus | Authentieke Perzische Keuken - Brugge | Bestel via UberEats & Deliveroo</title>
+    <meta name="description" content="Cyrus - Authentiek Perzisch restaurant in Brugge. Bestel online via UberEats & Deliveroo of dineer in onze sfeervolle zaak aan de Gistelse Steenweg 120. Chelo Kabab, Dizi Sangi & meer.">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --persian-gold: #C9A961;
+            --deep-teal: #1B4D4D;
+            --dark-navy: #0F1720;
+            --warm-cream: #F5F0E8;
+            --terracotta: #C75B39;
+            --text-light: #E8E4DC;
+            --gradient-gold: linear-gradient(135deg, #C9A961 0%, #A0823D 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--dark-navy);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .brand-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .persian-font {
+            font-family: 'Vazirmatn', sans-serif;
+        }
+
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark-navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s;
+        }
+
+        .preloader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(201, 169, 97, 0.3);
+            border-top-color: var(--persian-gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 32, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(201, 169, 97, 0.2);
+            transition: all 0.3s;
+        }
+
+        nav.scrolled {
+            padding: 0.8rem 5%;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-icon {
+            width: 55px;
+            height: 55px;
+            background: var(--gradient-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 1.8rem;
+            color: var(--dark-navy);
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(201, 169, 97, 0.4);
+        }
+
+        .logo-text {
+            font-size: 2rem;
+            color: var(--persian-gold);
+            letter-spacing: 4px;
+            font-weight: 600;
+        }
+
+        .logo-sub {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            opacity: 0.8;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: block;
+            margin-top: -5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 400;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--persian-gold);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--persian-gold);
+        }
+
+        .order-btn {
+            background: var(--gradient-gold);
+            color: var(--dark-navy) !important;
+            padding: 0.6rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 700 !important;
+            transition: transform 0.3s, box-shadow 0.3s !important;
+        }
+
+        .order-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(201, 169, 97, 0.4);
+        }
+
+        .order-btn::after {
+            display: none !important;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--persian-gold);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(15, 23, 32, 0.85) 0%, rgba(27, 77, 77, 0.8) 100%),
+                        url('https://static.where-e.com/Belgium/Cyrus_3265f670859484ea86abb78250963492.jpg') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23C9A961' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(201, 169, 97, 0.2);
+            border: 1px solid var(--persian-gold);
+            color: var(--persian-gold);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            color: var(--warm-cream);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            color: var(--persian-gold);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2.5rem;
+            background: var(--gradient-gold);
+            color: var(--dark-navy);
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border-radius: 50px;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(201, 169, 97, 0.4);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2.5rem;
+            background: transparent;
+            color: var(--persian-gold);
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border-radius: 50px;
+            transition: all 0.3s;
+            border: 2px solid var(--persian-gold);
+        }
+
+        .btn-secondary:hover {
+            background: var(--persian-gold);
+            color: var(--dark-navy);
+            transform: translateY(-3px);
+        }
+
+        .delivery-badges {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .delivery-badge {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .delivery-badge img {
+            height: 20px;
+            width: auto;
+        }
+
+        /* Floating Info Bar */
+        .info-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 32, 0.9);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(201, 169, 97, 0.3);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .info-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(201, 169, 97, 0.1);
+            border: 1px solid var(--persian-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--persian-gold);
+            font-size: 1.2rem;
+        }
+
+        .info-text h4 {
+            color: var(--persian-gold);
+            font-size: 0.9rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .info-text p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 6rem 5%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            color: var(--persian-gold);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--gradient-gold);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(to bottom, var(--dark-navy), #1a2634);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about::before {
+            content: 'کوروش';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 20rem;
+            color: rgba(201, 169, 97, 0.03);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-text h3 {
+            font-size: 2.2rem;
+            color: var(--persian-gold);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-light);
+            opacity: 0.9;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .features-list li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .features-list i {
+            color: var(--persian-gold);
+            font-size: 1.2rem;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            transform: rotate(2deg);
+            transition: transform 0.5s;
+        }
+
+        .about-image:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: 15px;
+            bottom: 15px;
+            border: 3px solid var(--persian-gold);
+            border-radius: 15px;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        /* Menu Section */
+        .menu {
+            background: var(--dark-navy);
+            position: relative;
+        }
+
+        .menu-categories {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            padding: 0.8rem 1.5rem;
+            background: transparent;
+            border: 1px solid rgba(201, 169, 97, 0.3);
+            color: var(--text-light);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.95rem;
+        }
+
+        .category-btn.active,
+        .category-btn:hover {
+            background: var(--persian-gold);
+            color: var(--dark-navy);
+            border-color: var(--persian-gold);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-item {
+            background: rgba(27, 77, 77, 0.2);
+            border: 1px solid rgba(201, 169, 97, 0.15);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-gold);
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+
+        .menu-item:hover::before {
+            transform: scaleX(1);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border-color: var(--persian-gold);
+            background: rgba(27, 77, 77, 0.3);
+        }
+
+        .menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item h3 {
+            color: var(--warm-cream);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item .price {
+            color: var(--persian-gold);
+            font-size: 1.3rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .menu-item p {
+            color: var(--text-light);
+            opacity: 0.8;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .menu-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .menu-tag {
+            display: inline-block;
+            background: rgba(201, 169, 97, 0.15);
+            color: var(--persian-gold);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: 1px solid rgba(201, 169, 97, 0.3);
+        }
+
+        .menu-tag.veggie {
+            background: rgba(76, 175, 80, 0.15);
+            color: #81C784;
+            border-color: rgba(76, 175, 80, 0.3);
+        }
+
+        .menu-tag.spicy {
+            background: rgba(199, 91, 57, 0.15);
+            color: var(--terracotta);
+            border-color: rgba(199, 91, 57, 0.3);
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background: linear-gradient(to bottom, #1a2634, var(--dark-navy));
+            padding: 4rem 0;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            height: 350px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .gallery-item.large {
+            grid-column: span 2;
+            grid-row: span 2;
+            height: 100%;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(15, 23, 32, 0.9) 0%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 2rem;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay h4 {
+            color: var(--persian-gold);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-overlay p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        /* Delivery Section */
+        .delivery {
+            background: var(--deep-teal);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .delivery::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: rgba(201, 169, 97, 0.05);
+            border-radius: 50%;
+            filter: blur(60px);
+        }
+
+        .delivery-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .delivery-text h3 {
+            font-size: 2.5rem;
+            color: var(--warm-cream);
+            margin-bottom: 1.5rem;
+        }
+
+        .delivery-text p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .delivery-platforms {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .platform-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--text-light);
+        }
+
+        .platform-card:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateX(10px);
+            border-color: var(--persian-gold);
+        }
+
+        .platform-icon {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+
+        .platform-info h4 {
+            color: var(--persian-gold);
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .platform-info p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin: 0;
+        }
+
+        .delivery-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+        }
+
+        .delivery-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Reviews Section */
+        .reviews {
+            background: var(--dark-navy);
+            text-align: center;
+        }
+
+        .review-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            color: var(--persian-gold);
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            opacity: 0.8;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .review-card {
+            background: rgba(27, 77, 77, 0.2);
+            border: 1px solid rgba(201, 169, 97, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: left;
+            position: relative;
+        }
+
+        .review-card::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 4rem;
+            color: var(--persian-gold);
+            opacity: 0.3;
+            font-family: 'Playfair Display', serif;
+            line-height: 1;
+        }
+
+        .review-stars {
+            color: var(--persian-gold);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .review-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        .reviewer {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .reviewer-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-navy);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .reviewer-info h4 {
+            color: var(--persian-gold);
+            margin-bottom: 0.2rem;
+        }
+
+        .reviewer-info p {
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, rgba(15, 23, 32, 0.95) 0%, rgba(27, 77, 77, 0.9) 100%),
+                        url('https://havecamerawilltravel.photography/wp-content/uploads/2016/12/arrondissement-brugge-bruges-canals-at-dusk-07-copyright-havecamerawilltravel-com.jpg') center/cover fixed;
+            position: relative;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-info h3 {
+            color: var(--persian-gold);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.2rem;
+            background: rgba(255,255,255,0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(201, 169, 97, 0.2);
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateX(5px);
+            border-color: var(--persian-gold);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(201, 169, 97, 0.1);
+            border: 1px solid var(--persian-gold);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--persian-gold);
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .contact-text h4 {
+            color: var(--persian-gold);
+            margin-bottom: 0.3rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-text p, .contact-text a {
+            color: var(--text-light);
+            opacity: 0.9;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .contact-text a:hover {
+            color: var(--persian-gold);
+        }
+
+        .hours-box {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(201, 169, 97, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+        }
+
+        .hours-box h3 {
+            color: var(--persian-gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .hours-row:last-child {
+            border-bottom: none;
+        }
+
+        .hours-row span:first-child {
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .hours-row span:last-child {
+            color: var(--persian-gold);
+        }
+
+        .map-container {
+            margin-top: 2rem;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid rgba(201, 169, 97, 0.3);
+            height: 300px;
+            background: rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .map-placeholder {
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        .map-placeholder i {
+            font-size: 3rem;
+            color: var(--persian-gold);
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0f14;
+            border-top: 1px solid rgba(201, 169, 97, 0.2);
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-brand p {
+            opacity: 0.8;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(201, 169, 97, 0.1);
+            border: 1px solid rgba(201, 169, 97, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--persian-gold);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+        }
+
+        .social-link:hover {
+            background: var(--persian-gold);
+            color: var(--dark-navy);
+            transform: translateY(-3px);
+        }
+
+        .footer-column h4 {
+            color: var(--persian-gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            opacity: 0.8;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--persian-gold);
+            opacity: 1;
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            text-align: center;
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom a {
+            color: var(--persian-gold);
+            text-decoration: none;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(15, 23, 32, 0.98);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                border-top: 1px solid rgba(201, 169, 97, 0.2);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+
+            .about-content,
+            .delivery-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-item.large {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .info-bar {
+                gap: 2rem;
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item.large {
+                grid-column: span 1;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+                padding: 0 2rem;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark-navy);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--persian-gold);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #B8941F;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="logo">
+            <div class="logo-icon">ک</div>
+            <div>
+                <div class="logo-text">CYRUS</div>
+                <span class="logo-sub">Perzische Keuken</span>
+            </div>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">Over Ons</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#gallery">Galerij</a></li>
+            <li><a href="#bezorging">Bezorging</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="https://www.ubereats.com/be-nl/store/cyrus/sXCThZVQWlq47GS_i7RvXQ" target="_blank" class="order-btn"><i class="fas fa-utensils"></i> Bestel Nu</a></li>
+        </ul>
+        <div class="mobile-menu" id="mobileMenu">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-badge"><i class="fas fa-star"></i> Top Rated Perzisch Restaurant Brugge</div>
+            <h1>CYRUS</h1>
+            <p class="hero-subtitle">Authentieke Perzische Keuken</p>
+            <p class="hero-description">Ervaar de betoverende smaken van Perzië in het hart van Brugge. Traditionele gerechten, bereid met passie en de beste ingrediënten.</p>
+            <div class="hero-buttons">
+                <a href="tel:+32491554540" class="btn-primary"><i class="fas fa-phone"></i> Bel Nu: 0491 55 45 40</a>
+                <a href="#menu" class="btn-secondary"><i class="fas fa-book-open"></i> Bekijk Menu</a>
+            </div>
+            <div class="delivery-badges">
+                <div class="delivery-badge">
+                    <i class="fas fa-motorcycle"></i>
+                    <span>Beschikbaar op UberEats</span>
+                </div>
+                <div class="delivery-badge">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span>Ook op Deliveroo</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-bar">
+            <div class="info-item">
+                <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="info-text">
+                    <h4>Locatie</h4>
+                    <p>Gistelse Steenweg 120, 8200 Brugge</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-icon"><i class="fas fa-clock"></i></div>
+                <div class="info-text">
+                    <h4>Open Vandaag</h4>
+                    <p>11:00 - 22:00</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-icon"><i class="fas fa-phone"></i></div>
+                <div class="info-text">
+                    <h4>Reserveren</h4>
+                    <p>0491 55 45 40</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="section-header fade-in">
+            <h2>Over Cyrus</h2>
+            <p>Een culinaire reis naar het oude Perzië, midden in Brugge</p>
+        </div>
+        <div class="about-content">
+            <div class="about-text fade-in">
+                <h3>De Essentie van Perzië in Brugge</h3>
+                <p>Welkom bij Cyrus, waar de rijke culinaire tradities van Perzië tot leven komen. Gelegen aan de Gistelse Steenweg 120 in Brugge, nodigt ons restaurant u uit voor een onvergetelijke ervaring vol authentieke smaken en warme gastvrijheid.</p>
+                <p>Vanaf het moment dat u binnenstapt, wordt u omhuld door een sfeervolle ambiance met Perzische muziek en doordachte decoratie. Onze gerechten, zoals de legendarische Chelo Kabab Kobideh en Shivid Polo Ba Mahiche, worden bereid volgens traditionele recepten.</p>
+                <ul class="features-list">
+                    <li><i class="fas fa-check-circle"></i> Authentieke Perzische keuken</li>
+                    <li><i class="fas fa-check-circle"></i> Warme, familiale sfeer</li>
+                    <li><i class="fas fa-check-circle"></i> Bezorging via UberEats & Deliveroo</li>
+                    <li><i class="fas fa-check-circle"></i> Vrijdag speciale Perzische buffet</li>
+                </ul>
+            </div>
+            <div class="about-image fade-in">
+                <img src="https://static.where-e.com/Belgium/Cyrus_3265f670859484ea86abb78250963492.jpg" alt="Cyrus Restaurant Interieur - Authentiek Perzisch decor in Brugge">
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu" id="menu">
+        <div class="section-header fade-in">
+            <h2>Ons Menu</h2>
+            <p>Ontdek onze selectie van traditionele Perzische gerechten</p>
+        </div>
+
+        <div class="menu-categories fade-in">
+            <button class="category-btn active" onclick="filterMenu('all')">Alles</button>
+            <button class="category-btn" onclick="filterMenu('grill')">Grill & Kebab</button>
+            <button class="category-btn" onclick="filterMenu('stoof')">Stoofschotels</button>
+            <button class="category-btn" onclick="filterMenu('rijst')">Rijstgerechten</button>
+            <button class="category-btn" onclick="filterMenu('voorgerecht')">Voorgerechten</button>
+        </div>
+
+        <div class="menu-grid" id="menuGrid">
+            <div class="menu-item fade-in" data-category="grill">
+                <div class="menu-header">
+                    <h3>Chelo Kabab Kobideh</h3>
+                    <div class="price">€16.90</div>
+                </div>
+                <p>Gegrild gehakt lamsvlees, perfect gekruid met Perzische kruiden en geserveerd met aromatische saffraanrijst.</p>
+                <div class="menu-tags">
+                    <span class="menu-tag">Bestseller</span>
+                    <span class="menu-tag spicy">Pittig</span>
+                </div>
+            </div>
+
+            <div class="menu-item fade-in" data-category="stoof">
+                <div class="menu-header">
+                    <h3>Shivid Polo Ba Mahiche</h3>
+                    <div class="price">€24.90</div>
+                </div>
+                <p>Malse lamsbout gesmoord in rijke saffraansaus, geserveerd met dille-rijst. Een koninklijk gerecht vol traditie.</p>
+                <div class="menu-tags">
+                    <span class="menu-tag">Chef's Choice</span>
+                </div>
+            </div>
+
+            <div class="menu-item fade-in" data-category="grill">
+                <div class="menu-header">
+                    <h3>Cyrus Kabab Mix</h3>
+                    <div class="price">€19.00</div>
+                </div>
+                <p>Een heerlijke combinatie van gekruide lams- en kipkebab geserveerd over rijst. Perfect voor de liefhebber van variatie.</p>
+                <div class="menu-tags">
+                    <span class="menu-tag">Populair</span>
+                </div>
+            </div>
+
+            <div class="menu-item fade-in" data-category="stoof">
+                <div class="menu-header">
+                    <h3>Dizi Sangi</h3>
+                    <div class="price">€18.50</div>
+                </div>
+                <p>Traditionele Perzische stoofpot met lamsvlees, peulvruchten en specerijen, geserveerd in een authentieke stenen pot.</p>
+                <div class="menu-tags">
+                    <span class="menu-tag">Traditioneel</span>
+                </div>
+            </div>
+
+            <div class="menu-item fade-in" data-category="grill">
+                <div class="menu-header">
+                    <h3>Chelo Kabab Shirazi</h3>
+                    <div class="price">€25.90</div>
+                </div>
+                <p>Perfect gegrilde lamsfilet in Shirazi-stijl, geserveerd met frisse salade en rijst.</p>
+                <div class="menu-tags">
+                    <span class="menu-tag">Specialiteit</span>
+                </div>
+            </div>
+
+            <div class="menu-item fade-in" data-category="voorgerecht">
+                <div class="menu-header">
+                    <h3>Kashk-e Bademjan</h3>
+                    <div class="price">€12.00</div>
+                </div>
+                <p>Geroosterde aubergine met gedroogde yoghurt, karameliseerde ui en munt. Een klassiek Perzisch voorgerecht.</p>
+                <div class="menu-tags">
+                    <span class="menu-tag veggie">Vegetarisch</span>
+                </div>
+            </div>
+
+            <div class="menu-item fade-in" data-category="voorgerecht">
+                <div class="menu-header">
+                    <h3>Druivenblad Dolma</h3>
+                    <div class="price">€6.90</div>
+                </div>
+                <p>Handgerolde druivenbladeren gevuld met kruidenrijst en kruiden. Een heerlijke vegetarische start.</p>
+                <div class="menu-tags">
+                    <span class="menu-tag veggie">Vegetarisch</span>
+                </div>
+            </div>
+
+            <div class="menu-item fade-in" data-category="rijst">
+                <div class="menu-header">
+                    <h3>Tahdig</h3>
+                    <div class="price">€8.90</div>
+                </div>
+                <p>Krokante goudbruine rijstkorst, geserveerd met khoresht (stoofschotel). De schat van elke Perzische maaltijd.</p>
+                <div class="menu-tags">
+                    <span class="menu-tag veggie">Vegetarisch</span>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="https://cyruscuisine.be/menu" target="_blank" class="btn-secondary"><i class="fas fa-external-link-alt"></i> Bekijk Volledig Menu</a>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="section-header fade-in">
+            <h2>Impressies</h2>
+            <p>Sfeerbeelden van Cyrus en onze heerlijke gerechten</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item large fade-in">
+                <img src="https://static.where-e.com/Belgium/Cyrus_3265f670859484ea86abb78250963492.jpg" alt="Cyrus Restaurant Interieur Brugge">
+                <div class="gallery-overlay">
+                    <h4>Ons Interieur</h4>
+                    <p>Authentieke Perzische sfeer</p>
+                </div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://tb-static.uber.com/prod/image-proc/processed_images/46fa97990cf304d43c5f5ef00475b653/a35eeeca6698a2d3899f60d36c88ed97.jpeg" alt="Cyrus Perzische gerechten">
+                <div class="gallery-overlay">
+                    <h4>Onze Gerechten</h4>
+                    <p>Authentieke presentatie</p>
+                </div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://images.socialdeal.be/bedrijf/cyrus-23060209445250.jpg" alt="Perzisch eten Cyrus Brugge">
+                <div class="gallery-overlay">
+                    <h4>Specialiteiten</h4>
+                    <p>Traditionele recepten</p>
+                </div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://rs-menus-api.roocdn.com/images/33565b4a-8f1d-4fe8-8695-ba04a348623c/image.jpeg" alt="Cyrus bezorging gerechten">
+                <div class="gallery-overlay">
+                    <h4>Bezorging</h4>
+                    <p>Ook thuis te genieten</p>
+                </div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://havecamerawilltravel.photography/wp-content/uploads/2016/12/arrondissement-brugge-bruges-canals-at-dusk-07-copyright-havecamerawilltravel-com.jpg" alt="Brugge stad">
+                <div class="gallery-overlay">
+                    <h4>Brugge</h4>
+                    <p>Onze prachtige stad</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Delivery Section -->
+    <section class="delivery" id="bezorging">
+        <div class="delivery-content">
+            <div class="delivery-text fade-in">
+                <h3>Bestel Cyrus bij je thuis</h3>
+                <p>Geniet van onze authentieke Perzische gerechten in de comfort van je eigen huis. Wij bezorgen in Brugge en omgeving via onze partners.</p>
+                
+                <div class="delivery-platforms">
+                    <a href="https://www.ubereats.com/be-nl/store/cyrus/sXCThZVQWlq47GS_i7RvXQ" target="_blank" class="platform-card">
+                        <div class="platform-icon" style="background: #000; color: #fff;">
+                            <i class="fas fa-motorcycle"></i>
+                        </div>
+                        <div class="platform-info">
+                            <h4>UberEats</h4>
+                            <p>Bestel nu via UberEats - Snelle bezorging in Brugge</p>
+                        </div>
+                        <i class="fas fa-arrow-right" style="margin-left: auto; color: var(--persian-gold);"></i>
+                    </a>
+
+                    <a href="https://deliveroo.be/nl-be/menu/brugge/sint-michiels-noord/cyrus" target="_blank" class="platform-card">
+                        <div class="platform-icon" style="background: #00CCBC; color: #fff;">
+                            <i class="fas fa-shopping-bag"></i>
+                        </div>
+                        <div class="platform-info">
+                            <h4>Deliveroo</h4>
+                            <p>Ook beschikbaar op Deliveroo - Gemakkelijk bestellen</p>
+                        </div>
+                        <i class="fas fa-arrow-right" style="margin-left: auto; color: var(--persian-gold);"></i>
+                    </a>
+
+                    <a href="tel:+32491554540" class="platform-card">
+                        <div class="platform-icon" style="background: var(--persian-gold); color: var(--dark-navy);">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="platform-info">
+                            <h4>Afhalen</h4>
+                            <p>Bel 0491 55 45 40 - Bestel telefonisch om af te halen</p>
+                        </div>
+                        <i class="fas fa-arrow-right" style="margin-left: auto; color: var(--persian-gold);"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="delivery-image fade-in">
+                <img src="https://tb-static.uber.com/prod/image-proc/processed_images/46fa97990cf304d43c5f5ef00475b653/a35eeeca6698a2d3899f60d36c88ed97.jpeg" alt="Cyrus bezorging gerechten Brugge">
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews">
+        <div class="section-header fade-in">
+            <h2>Wat Klanten Zeggen</h2>
+            <p>Ervaringen van onze gasten</p>
+        </div>
+
+        <div class="review-stats fade-in">
+            <div class="stat-item">
+                <span class="stat-number">4.8</span>
+                <span class="stat-label">Google Rating</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">500+</span>
+                <span class="stat-label">Tevreden Klanten</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">#1</span>
+                <span class="stat-label">Perzisch in Brugge</span>
+            </div>
+        </div>
+
+        <div class="review-grid">
+            <div class="review-card fade-in">
+                <div class="review-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="review-text">"Heerlijk gegeten! De Chelo Kabab Kobideh was perfect gekruid en de lamsbout viel van het bot. Echte aanrader voor wie van authentiek Perzisch eten houdt."</p>
+                <div class="reviewer">
+                    <div class="reviewer-avatar">S</div>
+                    <div class="reviewer-info">
+                        <h4>Sarah M.</h4>
+                        <p>Google Review</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-card fade-in">
+                <div class="review-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="review-text">"Wat een fijne verrassing in Brugge! De sfeer is warm en uitnodigend, en het personeel is zeer vriendelijk. De Dizi Sangi was fenomenaal!"</p>
+                <div class="reviewer">
+                    <div class="reviewer-avatar">M</div>
+                    <div class="reviewer-info">
+                        <h4>Mark D.</h4>
+                        <p>TripAdvisor</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-card fade-in">
+                <div class="review-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="review-text">"Bestel regelmatig via UberEats en de kwaliteit is altijd top. De porties zijn ruim en de smaken zijn authentiek. Absolute aanrader!"</p>
+                <div class="reviewer">
+                    <div class="reviewer-avatar">L</div>
+                    <div class="reviewer-info">
+                        <h4>Lisa K.</h4>
+                        <p>UberEats Review</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="section-header fade-in">
+            <h2>Contact & Info</h2>
+            <p>Bezoek ons of bestel online</p>
+        </div>
+        <div class="contact-content">
+            <div class="contact-info fade-in">
+                <h3>Contactgegevens</h3>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="contact-text">
+                            <h4>Adres</h4>
+                            <p>Gistelse Steenweg 120<br>8200 Brugge, België</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                        <div class="contact-text">
+                            <h4>Telefoon</h4>
+                            <a href="tel:+32491554540">+32 491 55 45 40</a>
+                            <p style="font-size: 0.9rem; margin-top: 0.3rem;">Reserveringen & Afhaal</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-text">
+                            <h4>E-mail</h4>
+                            <a href="mailto:cyrus.be8000@gmail.com">cyrus.be8000@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-parking"></i></div>
+                        <div class="contact-text">
+                            <h4>Parkeren</h4>
+                            <p>Gratis parkeerplaatsen beschikbaar<br>Parkeergelegenheid aan de straat</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="map-container">
+                    <div class="map-placeholder">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <p>Google Maps<br>Gistelse Steenweg 120, 8200 Brugge</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hours-box fade-in">
+                <h3><i class="far fa-clock"></i> Openingstijden</h3>
+                <div class="hours-row">
+                    <span>Maandag - Vrijdag</span>
+                    <span>11:00 - 22:00</span>
+                </div>
+                <div class="hours-row">
+                    <span>Zaterdag - Zondag</span>
+                    <span>12:00 - 23:00</span>
+                </div>
+                <div class="hours-row" style="margin-top: 1rem; padding-top: 1rem; border-top: 2px solid rgba(201, 169, 97, 0.3);">
+                    <span style="color: var(--persian-gold);"><i class="fas fa-utensils"></i> Vrijdag Buffet</span>
+                    <span style="color: var(--persian-gold);">Speciaal</span>
+                </div>
+                
+                <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(201, 169, 97, 0.1); border-radius: 10px; border: 1px solid rgba(201, 169, 97, 0.3);">
+                    <h4 style="color: var(--persian-gold); margin-bottom: 0.5rem;"><i class="fas fa-info-circle"></i> Handig om te weten</h4>
+                    <p style="font-size: 0.95rem; line-height: 1.6;">
+                        • Gratis WiFi beschikbaar<br>
+                        • Rolstoeltoegankelijk<br>
+                        • Huisdieren niet toegestaan<br>
+                        • Reserveren aanbevolen voor weekend
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo">
+                    <div class="logo-icon">ک</div>
+                    <div class="logo-text">CYRUS</div>
+                </div>
+                <p>Authentieke Perzische keuken in het hart van Brugge. Beleef de rijke smaken en gastvrijheid van Perzië.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-tripadvisor"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4>Snelle Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">Over Ons</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Bestellen</h4>
+                <ul class="footer-links">
+                    <li><a href="https://www.ubereats.com/be-nl/store/cyrus/sXCThZVQWlq47GS_i7RvXQ" target="_blank"><i class="fas fa-external-link-alt"></i> UberEats</a></li>
+                    <li><a href="https://deliveroo.be/nl-be/menu/brugge/sint-michiels-noord/cyrus" target="_blank"><i class="fas fa-external-link-alt"></i> Deliveroo</a></li>
+                    <li><a href="tel:+32491554540"><i class="fas fa-phone"></i> Bel voor Afhaal</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Contact</h4>
+                <ul class="footer-links">
+                    <li><a href="https://maps.google.com/?q=Gistelse+Steenweg+120+Brugge" target="_blank"><i class="fas fa-map-marker-alt"></i> Routebeschrijving</a></li>
+                    <li><a href="tel:+32491554540"><i class="fas fa-phone"></i> 0491 55 45 40</a></li>
+                    <li><a href="mailto:cyrus.be8000@gmail.com"><i class="fas fa-envelope"></i> E-mail ons</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Cyrus Restaurant. Alle rechten voorbehouden. | Gistelse Steenweg 120, 8200 Brugge | <a href="https://cyruscuisine.be" target="_blank">cyruscuisine.be</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Preloader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.querySelector('.preloader').classList.add('hidden');
+            }, 500);
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    navLinks.classList.remove('active');
+                    mobileMenu.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        });
+
+        // Fade In Animation on Scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+
+        // Menu Filter
+        function filterMenu(category) {
+            const items = document.querySelectorAll('.menu-item');
+            const buttons = document.querySelectorAll('.category-btn');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            items.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'block';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }, 10);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+
+        // Dynamic Year in Footer
+        document.querySelector('.footer-bottom p').innerHTML = 
+            `&copy; ${new Date().getFullYear()} Cyrus Restaurant. Alle rechten voorbehouden. | Gistelse Steenweg 120, 8200 Brugge | <a href="https://cyruscuisine.be" target="_blank">cyruscuisine.be</a>`;
+    </script>
+
+</body>
+</html>
